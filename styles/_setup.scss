@@ -10,6 +10,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 // ********************************************************************* //
 //                         altering default style                        //
 // ********************************************************************* //
+h1,
+h2,
+p {
+    margin: 0;
+}
 
 li {
     list-style-type: none;

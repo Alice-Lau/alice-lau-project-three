@@ -137,14 +137,65 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   clip: rect(0 0 0);
   overflow: hidden; }
 
+h1,
+h2,
+p {
+  margin: 0; }
+
 li {
   list-style-type: none; }
 
+.cactus svg {
+  stroke-width: 0.45419571; }
+
+.cactus-flower {
+  fill: #ff8080; }
+
+.cactus-body {
+  fill: #668000; }
+
+.neglected {
+  fill: #efcb68; }
+
+.neutral {
+  fill: #adbca5; }
+
+.healthy {
+  fill: #668000; }
+
+.annoyed {
+  fill: #e07a5f; }
+
+.cactus-bloom {
+  fill: #ffdd55; }
+
+.cactus-stripes {
+  fill: #245546; }
+
+.cactus-shadow {
+  fill: #e9ddaf;
+  stroke-width: 0.26458332; }
+
+.pot-color,
+.pot-contour {
+  stroke-width: 0.37023464; }
+
+.pot-color {
+  fill: #fec80d; }
+
+.pot-contour {
+  fill: #ffffff; }
+
 .wrapper {
-  background: tomato;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#ffb291), color-stop(#ffbcb5), color-stop(#ffcbd5), color-stop(#ffdbec), color-stop(#fbecfa), color-stop(#fceefc), color-stop(#feeffd), color-stop(#fff1ff), color-stop(#ffe4f4), color-stop(#ffdad2), color-stop(#ffd9a6), to(#ffe382));
+  background-image: -webkit-linear-gradient(left top, #ffb291, #ffbcb5, #ffcbd5, #ffdbec, #fbecfa, #fceefc, #feeffd, #fff1ff, #ffe4f4, #ffdad2, #ffd9a6, #ffe382);
+  background-image: -o-linear-gradient(left top, #ffb291, #ffbcb5, #ffcbd5, #ffdbec, #fbecfa, #fceefc, #feeffd, #fff1ff, #ffe4f4, #ffdad2, #ffd9a6, #ffe382);
+  background-image: linear-gradient(to right bottom, #ffb291, #ffbcb5, #ffcbd5, #ffdbec, #fbecfa, #fceefc, #feeffd, #fff1ff, #ffe4f4, #ffdad2, #ffd9a6, #ffe382);
+  margin: 0 auto;
   max-width: 1440px; }
 
 .stat {
+  margin: 0 auto;
   background: peachpuff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -157,29 +208,17 @@ li {
 .stat p {
   background: steelblue; }
 
-.display {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between; }
-
-.display div {
-  width: calc( 100% / 3 - 2px);
-  margin: 1px;
-  height: 50vh;
-  background: olive; }
-
-.cactus {
-  width: 80%;
+.message-display {
+  background: plum;
+  width: 60%;
   margin: 0 auto; }
 
-.cactus-display svg {
-  width: 200px;
-  height: 200px; }
+svg {
+  max-width: 100%;
+  width: 100%; }
 
-.interactive-button {
+.interaction-button-container {
+  background: lightgreen;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -187,23 +226,8 @@ li {
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly; }
 
-.interactive-button div {
+.interaction-button-container div {
   width: calc( 50%/2 - 2px);
   margin: 1px;
-  background: yellowgreen;
+  background: seagreen;
   text-align: center; }
-
-.stat p {
-  text-align: center; }
-
-.overlay {
-  display: none;
-  max-width: 100%;
-  min-height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9; }

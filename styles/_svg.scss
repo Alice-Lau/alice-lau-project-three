@@ -1,0 +1,62 @@
+// default from svg image, just copy and paste here to keep html and css separated
+// not intended to be changed
+$anti-social-yellow: #efcb68;
+$neutral-green: #adbca5;
+$healthy-green: #668000;
+$annoyed-red: #e07a5f;
+
+.cactus svg {
+    stroke-width: 0.45419571;
+}
+
+.cactus-flower {
+    fill:#ff8080;
+}
+
+.cactus-body {
+    fill:#668000;
+}
+
+// classes for cactus-body change
+.neglected {
+    fill: $anti-social-yellow;
+}
+
+.neutral {
+    fill: $neutral-green;
+}
+
+.healthy {
+    fill: $healthy-green;
+}
+
+.annoyed {
+    fill: $annoyed-red;
+}
+
+.cactus-bloom {
+    fill:#ffdd55;
+}
+
+.cactus-stripes {
+    fill:#245546;
+}
+
+.cactus-shadow {
+    fill:#e9ddaf;
+    stroke-width: 0.26458332;
+}
+
+.pot-color,
+.pot-contour {
+    stroke-width: 0.37023464;
+}
+
+.pot-color {
+    fill:#fec80d;
+}
+
+.pot-contour {
+    fill:#ffffff;
+}
+

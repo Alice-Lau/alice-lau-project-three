@@ -29,70 +29,89 @@ updateStat();
 
 // different conditional outputs
 const resultsArray = [
-    // row 1
-    [{
-        description: 'lowFull-low-Fun',
-        size: 1,
-        colour: '$anti-social-yellow',
-        emotion: 'sad',
-        message: 'Are you there? Cactus need some water & chatting!!!'
-    },
-    {
-        description: 'lowFull-rightFun',
-        size: 1,
-        colour: '$health-green',
-        emotion: 'neutral',
-        message: 'Cactus has enough chatting, but it needs water.'
-    }, {
-        description: 'lowFull-overFun',
-        size: 1,
-        colour: '$annoyed-red',
-        emotion: 'sad',
-        message: `Cactus don't want to chat no more. Just give it more water.`
-    }],
-    // row 2
-    [{
-        description: 'rightFull-lowFun',
-        size: 2,
-        colour: '$anti-social-yellow',
-        emotion: 'neutral',
-        message: 'Cactus has had enough water. Chat with it.'
-    },
-    {
-        description: 'rightFull-rightFun',
-        size: 2,
-        colour: '$health-green',
-        emotion: 'happy',
-        message: 'Cactus has enough water and chatting.'
-    }, {
-        description: 'rightFull-overFun',
-        size: 2,
-        colour: '$annoyed-red',
-        emotion: 'neutral',
-        message: `Cactus has enough water, you just need to stop chatting.`
-    }],
-    // row 3
-    [{
-        description: 'overFull-lowFun',
-        size: 3,
-        colour: '$anti-social-yellow',
-        emotion: 'sad',
-        message: 'Stop watering. Cactus just want to chat.'
-    },
-    {
-        description: 'overFull-rightFun',
-        size: 3,
-        colour: '$health-green',
-        emotion: 'neutral',
-        message: 'Cactus has chatted enough, just stop watering though.'
-    }, {
-        description: 'overFull-overFun',
-        size: 3,
-        colour: '$annoyed-red',
-        emotion: 'sad',
-        message: `Just leave Cactus alone for a little bit. Too much water, too much chatting.`
-    }],
-]
+// row 1: fullness 0
+    [
+        {
+            //screen reader aria label
+            description: 'Low in "Fullness", low in "Fun". Cactus looks dehydrated and thirsty.',
+            //reflective of fullness
+            size: 1,
+            //reflective of fun
+            emotion: 'sad',
+            //reflective to overall condition
+            color: 'neglected',
+            //displaying written message to the DOM, increasing modality channel for communication with users
+            message: 'Are you there? Cactus need some water & chatting!!!'
+        },
+        {
+            description: 'Low in "Fullness", right amount in "Fun". Cactus looks happier, but need watering.',
+            size: 1,
+            emotion: 'smile',
+            color: 'neutral',
+            message: 'Cactus enjoys chatting with you, but it needs water.'
+        },
+        {
+            description: 'Low in "Fullness", too much in "Fun". Cactus looks annoyed, it is thirsty.',
+            size: 1,
+            emotion: 'angry',
+            color: 'annoyed',
+            message: 'Cactus is thirsty. Stop babbling and give it some water!'
+        },
+    ],
+
+// row 2: fullness 1
+    [
+        {
+            description: 'Right amount in "Fullness", low in "Fun". Cactus looks healthier, but it wants to chat with someone.',
+            size: 1.5,
+            emotion: 'sad',
+            color: 'neutral',
+            message: 'Cactus feels hydrated, but is a little lonely.'
+        },
+        {
+            description: 'Right amount in "Fullness", right amount in "Fun". Cactus is feeling good in every way! Maintain its "Fullness" and "Fun" level!',
+            size: 1.5,
+            emotion: 'smile',
+            color: 'healthy',
+            message: 'Cactus is feeling great in every way. It appreciates your care!!!'
+        },
+        {
+            description: 'Right amount in "Fullness", too much in "Fun". Cactus is hydrated, but it looks annoyed.',
+            size: 1.5,
+            emotion: 'angry',
+            color: 'neutral',
+            message: 'Cactus feels hydrated, but it thinks you are talking too much.'
+        },
+    ],
+
+// row 3: fullness 2
+    [
+        {
+            description: 'Too much in "Fullness", low in "Fun". Cactus looks bloated. No more watering. It looks lonely though.',
+            size: 2,
+            emotion: 'sad',
+            color: 'neglected',
+            message: `Cactus doesn't need any more water, but it feels lonely.`
+        },
+        {
+            description: 'Too much in "Fullness", right amount in "Fun". Cactus looks bloated, but content.',
+            size: 2,
+            emotion: 'smile',
+            color: 'neutral',
+            message: 'Cactus had too much water and enough chatting. Just leave it alone for a while.'
+        },
+        {
+            description: 'Too much in "Fullness", too much in "Fun". Cactus looks bloated and annoyed',
+            size: 2,
+            emotion: 'angry',
+            color: 'annoyed',
+            message: 'Too much, just too much of everything. Cactus needs some alone time.'
+        }
+    ],
+] // end of condition array
+
+console.table(resultsArray);
+console.log(resultsArray[0]);
 
 // defining button interaction function: when each button is being clicked, then stats are altered
 const interactWithCactus = (buttonAction) => {
@@ -123,7 +142,7 @@ $('#talk').on('click', function () {
 function getStatLevel(stat) {
     if (stat >= 20) {
         return 2
-    } else if (stat >= 15) {
+    } else if (stat >= 10 ) {
         return 1
     } else {
         return 0
@@ -138,12 +157,11 @@ const checkCondition = () => {
         const fullnessLevel = getStatLevel(cactus.fullness);
         const funLevel = getStatLevel(cactus.fun);
         const result = resultsArray[fullnessLevel][funLevel];
-        console.log(fullnessLevel, funLevel);
-        console.log(result);
+
+        $('.message-display').html(`<p>${result.message}</p>`);
         // make change to cactus size
-        // make change to cactus color
+        $('#cactus-body').attr('class', `${result.color}`);
         // make change to cactus emotion
-        // paste cactus feedback to messagebaord
     }
 }
 
@@ -160,7 +178,7 @@ const naturalDecay = () => {
     }
 };
 
-let interval = setInterval(naturalDecay, 3000);
+// let interval = setInterval(naturalDecay, 5000);
 
 const gameOverAlert = function() {
         alert('killed it');

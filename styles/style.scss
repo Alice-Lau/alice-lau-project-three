@@ -1,18 +1,18 @@
 @import "setup";
+@import "svg";
 
-$anti-social-yellow: #fcf4a3;
-$health-green: #50c878;
-$annoyed-red: #a8666e;
 // ********************************************************************* //
 //                                 layout                                //
 // ********************************************************************* //
 
 .wrapper {
-    background: tomato;
+    background-image: linear-gradient(to right bottom, #ffb291, #ffbcb5, #ffcbd5, #ffdbec, #fbecfa, #fceefc, #feeffd, #fff1ff, #ffe4f4, #ffdad2, #ffd9a6, #ffe382);
+    margin: 0 auto;
     max-width: 1440px;
 }
 
 .stat {
+    margin: 0 auto;
     background: peachpuff;
     display: flex;
     justify-content: space-evenly;
@@ -23,61 +23,35 @@ $annoyed-red: #a8666e;
     background: steelblue;
 }
 
-.display {
-    display: flex;
-    justify-content: space-between;
-}
-
-.display div {
-    width: calc( 100% / 3 - 2px );
-    margin: 1px;
-    height: 50vh;
-    background: olive;
-}
-
-.cactus {
-    width: 80%;
+.message-display {
+    background: plum;
+    width: 60%;
     margin: 0 auto;
 }
 
-.cactus-display svg {
-    width: 200px;
-    height: 200px;
+svg {
+    max-width: 100%;
+    width: 100%;
 }
 
-.interactive-button {
+.interaction-button-container {
+    background: lightgreen;
     display: flex;
     justify-content: space-evenly;
 }
 
-.interactive-button div {
+.interaction-button-container div {
     width: calc( 50%/2 - 2px);
     margin: 1px;
-    background: yellowgreen;
+    background: seagreen;
     text-align: center;
 }
 
 // ********************************************************************* //
 //                                 stat                                  //
 // ********************************************************************* //
-.stat p {
-    text-align: center;
-}
 
 
 // ********************************************************************* //
 //                                 stat                                  //
 // ********************************************************************* //
-.overlay {
-    display: none;
-    max-width: 100%;
-    min-height: 100vh;
-    background: rgba(0,0,0, 0.5);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9;
-
-}
