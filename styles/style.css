@@ -168,8 +168,16 @@ li {
 .display div {
   width: calc( 100% / 3 - 2px);
   margin: 1px;
-  height: 20vh;
+  height: 50vh;
   background: olive; }
+
+.cactus {
+  width: 80%;
+  margin: 0 auto; }
+
+.cactus-display svg {
+  width: 200px;
+  height: 200px; }
 
 .interactive-button {
   display: -webkit-box;
