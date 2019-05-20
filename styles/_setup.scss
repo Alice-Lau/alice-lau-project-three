@@ -10,12 +10,48 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 // ********************************************************************* //
 //                         altering default style                        //
 // ********************************************************************* //
+html {
+    font-size: 125%;
+    //1 rem = 20 px
+}
+
 h1,
 h2,
+h3 {
+    font-family: 'Vast Shadow', cursive;
+}
+
+h1 span,
+li,
 p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
     margin: 0;
+}
+
+ul,
+ol {
+    padding: 0;
 }
 
 li {
     list-style-type: none;
+}
+
+label {
+    visibility: hidden;
+    position: absolute;
+    left: -999;
+    z-index: -9;
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
 }

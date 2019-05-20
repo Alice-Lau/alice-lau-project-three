@@ -1,0 +1,141 @@
+@media (max-width: 1300px) {
+    .cactus {
+        width: 33%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .cactus {
+        width: 35%;
+    }
+}
+
+@media (max-width: 1120px) {
+    .stat ul,
+    .desktop-buttons {
+        width: 70%;
+    }
+
+    .message-display {
+        width: 55%;
+    }
+
+    .cactus {
+        width: 38%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .cactus {
+        width: 40%;
+    }
+}
+
+@media (max-width: 890px) {
+    .stat ul,
+    .desktop-buttons {
+        width: 75%;
+    }
+
+    .message-display {
+        width: 60%;
+    }
+
+    .cactus {
+        width: 45%;
+    }
+}
+
+@media (max-width: 810px) {
+    .stat ul,
+    .desktop-buttons {
+        width: 85%;
+    }
+
+    .message-display {
+        width: 70%;
+    }
+
+    .cactus {
+        width: 50%;
+    }
+}
+
+@media (max-width: 700px) {
+    .stat ul,
+    .desktop-buttons {
+        width: 95%;
+        justify-content: space-evenly;
+    }
+
+    .message-display {
+        width: 80%;
+    }
+
+    .cactus {
+        width: 60%;
+    }
+}
+
+@media (max-width: 630px) {
+    h1 {
+        text-align: center;
+    }
+
+    .desktop-buttons {
+        display: none;
+    }
+
+    .mobile-buttons {
+        width: 95%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .cactus {
+        width: 70%;
+    }
+}
+
+@media (max-width: 570px) {
+    .stat ul,
+    .mobile-buttons {
+        width: 100%;
+        padding: 0 5%;
+    }
+    
+    .message-display {
+        width: 90%;
+    }
+
+    .cactus {
+        width: 75%;
+    }
+}
+
+@media (max-width: 500px) {
+    .cactus {
+        width: 85%;
+    }
+} 
+
+@media (max-width: 440px) {
+    header {
+        padding: 5% 0 0 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+
+
+    .stat ul,
+    .mobile-buttons {
+        justify-content: space-around;
+    }
+
+    .cactus {
+        width: 100%;
+    }
+}

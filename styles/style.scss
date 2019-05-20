@@ -6,52 +6,190 @@
 // ********************************************************************* //
 
 .wrapper {
-    background-image: linear-gradient(to right bottom, #ffb291, #ffbcb5, #ffcbd5, #ffdbec, #fbecfa, #fceefc, #feeffd, #fff1ff, #ffe4f4, #ffdad2, #ffd9a6, #ffe382);
+    background-image: linear-gradient(to left top, #f9ecc8, #fdebcd, #ffead3, #ffeada, #feeae0);
     margin: 0 auto;
     max-width: 1440px;
 }
 
+header {
+    min-height: 10vh;
+}
+
+header,
+footer {
+    width: 100%;
+    padding: 0 5%;
+    background: #4f564b;
+}
+
+footer {
+    min-height: 5vh;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #f9ecc8;
+
+    span {
+        font-size: 1.5rem;
+        color: #fcf5e3;
+    }
+}
+
 .stat {
-    margin: 0 auto;
-    background: peachpuff;
+    min-height: 10vh;
+}
+
+.stat ul {
+    width: 60%;
+    margin: 3px auto;
+    padding: 0 10%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.stat li {
+    color: #4f564b;
 }
 
 .stat h2,
 .stat p {
-    background: steelblue;
+    margin: 3px 0;
+}
+
+.display {
+    min-height: 65vh;
 }
 
 .message-display {
-    background: plum;
+    background:#4f564b;
+    min-height: 5vh;
+    width: 40%;
+    margin: 5px auto;
+    text-align: center;
+    border-radius: 10px;
+    color: #f9ecc8;
+}
+
+.cactus-display {
     width: 60%;
+    min-height: 60vh;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cactus {
+    width: 30%;
+    margin: 30px auto;
+    position: relative;
 }
 
 svg {
     max-width: 100%;
-    width: 100%;
+    width: 100%
 }
 
-.interaction-button-container {
-    background: lightgreen;
+.cactus-emotion {
+    width: 50%;
+    margin: 0 auto;
+    transform: translateY(-170%);
+}
+
+.interaction-container {
+    min-height: 10vh;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
 }
 
-.interaction-button-container div {
-    width: calc( 50%/2 - 2px);
-    margin: 1px;
-    background: seagreen;
-    text-align: center;
+.desktop-buttons {
+    width: 60%;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.interaction-container button {
+    background: #4f564b;
+    padding: 3px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #f9ecc8;
+    transition: box-shadow .3s;
+
+    &:focus,
+    &:hover {
+        box-shadow: 0 0 10px #f9ecc8;
+    }
+}
+
+.mobile-buttons {
+    display: none;
 }
 
 // ********************************************************************* //
-//                                 stat                                  //
+//                         instruction screen                            //
 // ********************************************************************* //
+.start-screen {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    min-height: 100vh;
+    padding: 5% 0;
+}
+
+.on-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+
+.off-screen {
+    left: -120%;
+    z-index: -9;
+}
+
+.start-screen-title-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.start-screen-title-bar h2 {
+    width: 80%;
+    flex-grow: 1;
+}
+
+.escape-button {
+    width: 10%;
+    text-align: right;
+}
+
+.escape-button button {
+    background: transparent;
+    border: none;
+
+    &:focus {
+        box-shadow: 0 0 10px #3d3d3d;
+    }
+}
+
+.overlay-background {
+    background: #fbd7cb;
+    margin: 0 auto;
+    padding: 4%;
+    width: 90%;
+    color: #3d3d3d;
+}
 
 
 // ********************************************************************* //
-//                                 stat                                  //
+//                             media query                               //
 // ********************************************************************* //
+@import "media-query";

@@ -9,6 +9,19 @@ $annoyed-red: #e07a5f;
     stroke-width: 0.45419571;
 }
 
+//class for cactus svg size
+.shrunken {
+    transform: scale(.8);
+}
+
+.healthy-size {
+    transform: scale(1);
+}
+
+.bloated {
+    transform: scale(1.3);
+}
+
 .cactus-flower {
     fill:#ff8080;
 }
