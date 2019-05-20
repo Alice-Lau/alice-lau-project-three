@@ -124,26 +124,25 @@ const $cactus = $('#cactus-img');
 const $cactusBody = $('#cactus-body');
 const $cactusEmotion = $('.cactus-emotion');
 
-const $waterButton = $('#water');
-const $talkButton = $('#talk');
+const $waterButtonDesktop = $('#water-desktop');
+const $talkButtonDesktop = $('#talk-desktop');
+const $waterButtonMobile = $('#water-mobile');
+const $talkButtonMobile = $('#talk-mobile');
 
 const cactusApp = {};
-
-cactusApp.init = function() {
-    cactusApp.updateStat();
-}
 
 // pasting currentStat on DOM
 cactusApp.updateStat = function () {
     $fullness.text(cactus.fullness + ' / 30');
     $fun.text(cactus.fun + ' / 30');
 }
+// cactusApp.updateStat();
 
 // defining button interaction function: when each button is being clicked, then stats are altered
 cactusApp.interactWithCactus = (buttonAction) => {
     $msgBoard.empty();
-    const statReplenish = Math.floor(Math.random() * 6);
-    const statDecay = Math.floor(Math.random() * 4);
+    const statReplenish = Math.ceil(Math.random() * 6);
+    const statDecay = Math.ceil(Math.random() * 4);
 
     if (buttonAction === 'eat') {
         cactus.eat(statReplenish, statDecay);
@@ -155,11 +154,20 @@ cactusApp.interactWithCactus = (buttonAction) => {
 }
 
 // linking button interaction to an event listener, calling interacWithCactus function into action
-$('#water').on('click', function () {
+$waterButtonDesktop.on('click', function () {
     cactusApp.interactWithCactus('eat');
 })
 
-$('#talk').on('click', function () {
+$talkButtonDesktop.on('click', function () {
+    cactusApp.interactWithCactus('talk');
+})
+
+//even with display: none, id cannot be shared. Thus repeated the same function for mobile button
+$waterButtonMobile.on('click', function () {
+    cactusApp.interactWithCactus('eat');
+})
+
+$talkButtonMobile.on('click', function () {
     cactusApp.interactWithCactus('talk');
 })
 
@@ -177,7 +185,7 @@ function getStatLevel(stat) {
 // checking and outputing feedback on DOM
 cactusApp.checkCondition = () => {
     if ( cactus.fullness < 1 || cactus.fun < 1 || cactus.fullness > 29 || cactus.fun > 29) {
-        gameOverAlert();
+        cactusApp.gameOverAlert();
     } else {
         const fullnessLevel = getStatLevel(cactus.fullness);
         const funLevel = getStatLevel(cactus.fun);
@@ -195,10 +203,10 @@ cactusApp.naturalDecay = () => {
     if (cactus.fullness > 0 && cactus.fun > 0) {
         cactus.fullness = cactus.fullness - 1;
         cactus.fun = cactus.fun - 1;
-        updateStat();  
-        checkCondition();
+        cactusApp.updateStat();  
+        cactusApp.checkCondition();
     } else {
-        gameOverAlert();
+        cactusApp.gameOverAlert();
     }
 };
 
@@ -216,24 +224,29 @@ cactusApp.resetCactus = () => {
     cactus.fun = 10;
     updateStat();
     
-    interval = setInterval(naturalDecay, 3000);
+    interval = setInterval(cactusApp.naturalDecay, 3000);
 }
 
 $('html').keyup(function(key) {
     if (key.keyCode === 27) $startEsc.click();
-    if (key.keyCode === 70) $waterButton.click();
-    if (key.keyCode === 74) $talkButton.click();
+    if (key.keyCode === 70) $waterButtonDesktop.click();
+    if (key.keyCode === 74) $talkButtonMobile.click();
 })
+
+cactusApp.init = () => {
+    cactusApp.updateStat();
+    interval = setInterval(cactusApp.naturalDecay, 5000);
+}
 
 // doc ready
 $('document').ready(function() {
-    // initiateCactus();
-    // interval = setInterval(naturalDecay, 10000);
+
     $startEsc.on('click', function () {
         $startScreen.addClass('off-screen');
-        cactusApp.init();
-        $waterButton.removeAttr('disabled');
-        $talkButton.removeAttr('disabled');
+        cactusApp.init();        
+        // $waterButton.removeAttr('disabled');
+        // $talkButton.removeAttr('disabled');
     })
+
 })
 
