@@ -136,6 +136,9 @@ const $reset = $('#reset');
 
 const cactusApp = {};
 
+//for clearing the interval properly
+let interval;
+
 // pasting currentStat on DOM
 cactusApp.updateStat = function () {
     $fullness.text(cactus.fullness + ' / 30');
@@ -313,7 +316,6 @@ $reset.on('click', function() {
 
 cactusApp.init = () => {
     cactusApp.updateStat();
-    interval = setInterval(cactusApp.naturalDecay, 3000);
 }
 
 $('html').keyup(function(key) {
@@ -328,6 +330,8 @@ $('document').ready(function() {
     $startEsc.on('click', function () {
         $startScreen.addClass('off-screen');
         cactusApp.init();
+        clearInterval(cactusApp.naturalDecay);
+        interval = setInterval(cactusApp.naturalDecay, 3000);
     })
 
 })

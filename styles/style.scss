@@ -8,7 +8,7 @@
 .result {
     background: rgba(0,0,0,0.5);
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     padding: 5% 0;
 }
 
@@ -22,6 +22,7 @@
 .off-screen {
     left: -120%;
     z-index: -9;
+    font-size: 0;
 }
 
 .start-screen-title-bar {
@@ -84,7 +85,7 @@ footer {
 }
 
 footer {
-    min-height: 5vh;
+    height: 5vh;
 }
 
 h1 {
@@ -103,8 +104,8 @@ h1 {
 
 .stat ul {
     width: 60%;
-    margin: 3px auto;
-    padding: 0 10%;
+    margin: 0 auto;
+    padding: 0.5% 10%;
     display: flex;
     justify-content: space-between;
     text-align: center;
@@ -120,14 +121,17 @@ h1 {
 }
 
 .display {
-    min-height: 65vh;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .message-display {
     background:#4f564b;
     min-height: 5vh;
     width: 40%;
-    margin: 5px auto;
+    margin: 0 auto;
     text-align: center;
     border-radius: 10px;
     color: #f9ecc8;
@@ -135,7 +139,7 @@ h1 {
 
 .cactus-display {
     width: 60%;
-    min-height: 60vh;
+    min-height: 55vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -144,7 +148,8 @@ h1 {
 
 .cactus {
     width: 30%;
-    margin: 30px auto;
+    margin: 0 auto;
+    padding: 3%;
     position: relative;
 }
 
