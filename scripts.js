@@ -216,26 +216,80 @@ cactusApp.naturalDecay = () => {
     }
 };
 
-// let interval = setInterval(naturalDecay, 3000);
+// list of death situations
+const deathSituations = [
+    //Fullness 0
+    [
+        {
+            reason1: 'dehydration',
+            reason2: 'neglect'
+        },
+        {
+            reason1: 'dehydration',
+            reason2: ''
+        },
+        {
+            reason1: 'dehydration',
+            reason2: 'annoyance'
+        }
 
-cactusApp.death = () => {
-    if (cactus.fullness <= 0 && cactus.fun <=0) {
-        cactus.death = 'death by dehydration and neglect';
-    } else if (cactus.fullness <= 0) {
-        cactus.death = 'death by dehydration';
+    ],
+    //Fullness okay
+    [
+        {
+            reason1: '',
+            reason2: 'neglect'
+        },
+        {
+            reason1: '',
+            reason2: ''
+        },
+        {
+            reason1: '',
+            reason2: 'annoyance'
+        }
+
+    ],
+    //Fullness 30
+    [
+        {
+            reason1: 'drowning',
+            reason2: 'neglect'
+        },
+        {
+            reason1: 'drowning',
+            reason2: ''
+        },
+        {
+            reason1: 'drowning',
+            reason2: 'annoyance'
+        }
+    ]
+]
+
+function getDeathReason(stat) {
+    if (stat >= 30) {
+        return 2
+    } else if (stat <=0) {
+        return 0
     } else {
-        cactus.death='death by neglect';
+        return 1
     }
 }
 
 cactusApp.gameOverAlert = function() {
-    cactus.death = "";
-    cactusApp.death();
-    $result.css('display', 'block')
+    const fullnessLevel = getDeathReason(cactus.fullness);
+    const funLevel = getDeathReason(cactus.fun);
+    const death = deathSituations[fullnessLevel][funLevel];
+
+    // cactusApp.death();
+    $result.css('display', 'block').addClass('on-screen');
     $resultTextWrap.html(`
+                        <h2>Game Over</h2>
+                        <h3>Cactus's Health Report</h3>
                         <p>Fullness: ${cactus.fullness}</p>
                         <p>Fun: ${cactus.fun}</p>
-                        <p>Reason of Death: ${cactus.death}</p>
+                        <p>Reason of Death: death by ${death.reason1}.${death.reason2}</p>
                     `)
     clearInterval(interval);
 }
@@ -245,7 +299,10 @@ cactusApp.resetCactus = () => {
     cactus.fullness = 10;
     cactus.fun = 10;
     cactusApp.updateStat();
-    $result.attr('class', 'off-screen');
+    $cactus.attr('class', 'healthy-size');
+    $cactusBody.attr('class', 'healthy');
+    $cactusEmotion.html(` <img src='assets/emotion-neutral.svg' alt='A neutral emotion.'/> `);
+    $result.removeClass('on-screen');
     $startScreen.removeClass('off-screen');
 }
 

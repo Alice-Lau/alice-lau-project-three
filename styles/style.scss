@@ -4,7 +4,8 @@
 // ********************************************************************* //
 //                     instruction & ending screen                       //
 // ********************************************************************* //
-.start-screen {
+.start-screen,
+.result {
     background: rgba(0,0,0,0.5);
     width: 100%;
     min-height: 100vh;
@@ -51,7 +52,8 @@
     }
 }
 
-.overlay-background {
+.overlay-background,
+.cactus-report {
     background: #fbd7cb;
     max-width: 1440px;
     min-height: 80vh;
@@ -198,6 +200,11 @@ svg {
 // ********************************************************************* //
 .result {
     display: none;
+}
+
+.text-wrap {
+    width: 33.5%;
+    margin: 30px auto;
 
     h2,
     h3 {
@@ -205,13 +212,9 @@ svg {
     }
 
     p {
+        padding: 10px 30px;
         line-height: 1.5rem;
     }
-}
-
-.text-wrap {
-    width: 20%;
-    margin: 30px auto;
 }
 
 .reset-button {
