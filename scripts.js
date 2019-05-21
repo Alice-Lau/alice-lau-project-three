@@ -303,6 +303,7 @@ cactusApp.resetCactus = () => {
     $cactusBody.attr('class', 'healthy');
     $cactusEmotion.html(` <img src='assets/emotion-neutral.svg' alt='A neutral emotion.'/> `);
     $result.removeClass('on-screen');
+    $result.css('display', 'none');
     $startScreen.removeClass('off-screen');
 }
 
