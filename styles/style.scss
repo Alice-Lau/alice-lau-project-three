@@ -2,7 +2,66 @@
 @import "svg";
 
 // ********************************************************************* //
-//                                 layout                                //
+//                     instruction & ending screen                       //
+// ********************************************************************* //
+.start-screen {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    min-height: 100vh;
+    padding: 5% 0;
+}
+
+.on-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+
+.off-screen {
+    left: -120%;
+    z-index: -9;
+}
+
+.start-screen-title-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.start-screen-title-bar h2 {
+    width: 80%;
+    flex-grow: 1;
+}
+
+.escape-button {
+    width: 10%;
+    text-align: right;
+    padding: 3px;
+}
+
+.escape-button button {
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 0 10px #3d3d3d;
+    }
+}
+
+.overlay-background {
+    background: #fbd7cb;
+    max-width: 1440px;
+    min-height: 80vh;
+    margin: 0 auto;
+    padding: 4%;    
+    color: #3d3d3d;
+}
+
+// ********************************************************************* //
+//                            main app layout                            //
 // ********************************************************************* //
 
 .wrapper {
@@ -113,7 +172,8 @@ svg {
     justify-content: space-between;
 }
 
-.interaction-container button {
+.interaction-container button,
+.reset-button button {
     background: #4f564b;
     padding: 3px;
     border: none;
@@ -125,7 +185,7 @@ svg {
 
     &:focus,
     &:hover {
-        box-shadow: 0 0 10px #f9ecc8;
+        box-shadow: 0 0 20px #3d3d3d;
     }
 }
 
@@ -134,61 +194,29 @@ svg {
 }
 
 // ********************************************************************* //
-//                         instruction screen                            //
+//                                result                                 //
 // ********************************************************************* //
-.start-screen {
-    background: rgba(0,0,0,0.5);
-    width: 100%;
-    min-height: 100vh;
-    padding: 5% 0;
-}
+.result {
+    display: none;
 
-.on-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 9;
-}
+    h2,
+    h3 {
+        text-align: center;
+    }
 
-.off-screen {
-    left: -120%;
-    z-index: -9;
-}
-
-.start-screen-title-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.start-screen-title-bar h2 {
-    width: 80%;
-    flex-grow: 1;
-}
-
-.escape-button {
-    width: 10%;
-    text-align: right;
-}
-
-.escape-button button {
-    background: transparent;
-    border: none;
-
-    &:focus {
-        box-shadow: 0 0 10px #3d3d3d;
+    p {
+        line-height: 1.5rem;
     }
 }
 
-.overlay-background {
-    background: #fbd7cb;
-    margin: 0 auto;
-    padding: 4%;
-    width: 90%;
-    color: #3d3d3d;
+.text-wrap {
+    width: 20%;
+    margin: 30px auto;
 }
 
-
+.reset-button {
+    text-align: center;
+}
 // ********************************************************************* //
 //                             media query                               //
 // ********************************************************************* //

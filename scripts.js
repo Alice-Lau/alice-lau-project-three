@@ -31,8 +31,8 @@ const resultsArray = [
             //reflective to overall condition
             color: 'neglected',
             //displaying written message to the DOM, increasing modality channel for communication with users
-            message: 'Are you there? Cactus need some water & chatting!!!'
-            //path d for emotion
+            message: 'Are you there? Cactus need some water & chatting!!!',
+            //reason of death
         },
         {
             description: 'Low in "Fullness", right amount in "Fun". Cactus looks happier, but need watering.',
@@ -121,6 +121,7 @@ const $fun = $('.current-fun');
 const $msgBoard = $('.message-display');
 
 const $cactus = $('#cactus-img');
+const $svgDesc = $('#svg-description');
 const $cactusBody = $('#cactus-body');
 const $cactusEmotion = $('.cactus-emotion');
 
@@ -128,6 +129,10 @@ const $waterButtonDesktop = $('#water-desktop');
 const $talkButtonDesktop = $('#talk-desktop');
 const $waterButtonMobile = $('#water-mobile');
 const $talkButtonMobile = $('#talk-mobile');
+
+const $result = $('.result');
+const $resultTextWrap = $('.text-wrap');
+const $reset = $('#reset');
 
 const cactusApp = {};
 
@@ -195,6 +200,7 @@ cactusApp.checkCondition = () => {
         $cactus.attr('class', `${result.size}`);
         $cactusBody.attr('class', `${result.color}`);
         $cactusEmotion.html(` <img src=${result.emotionImg} alt=${result.emotion}/> `);
+        $svgDesc.text(`${result.description}`);
     }
 }
 
@@ -210,20 +216,45 @@ cactusApp.naturalDecay = () => {
     }
 };
 
-// let interval = setInterval(naturalDecay, 5000);
+// let interval = setInterval(naturalDecay, 3000);
+
+cactusApp.death = () => {
+    if (cactus.fullness <= 0 && cactus.fun <=0) {
+        cactus.death = 'death by dehydration and neglect';
+    } else if (cactus.fullness <= 0) {
+        cactus.death = 'death by dehydration';
+    } else {
+        cactus.death='death by neglect';
+    }
+}
 
 cactusApp.gameOverAlert = function() {
-        alert('killed it');
-        clearInterval(interval);
+    cactus.death = "";
+    cactusApp.death();
+    $result.css('display', 'block')
+    $resultTextWrap.html(`
+                        <p>Fullness: ${cactus.fullness}</p>
+                        <p>Fun: ${cactus.fun}</p>
+                        <p>Reason of Death: ${cactus.death}</p>
+                    `)
+    clearInterval(interval);
 }
 
 //create result reset page, then when click on reset button, then call resetCactus function
-
 cactusApp.resetCactus = () => {
     cactus.fullness = 10;
     cactus.fun = 10;
-    updateStat();
-    
+    cactusApp.updateStat();
+    $result.attr('class', 'off-screen');
+    $startScreen.removeClass('off-screen');
+}
+
+$reset.on('click', function() {
+    cactusApp.resetCactus();
+});
+
+cactusApp.init = () => {
+    cactusApp.updateStat();
     interval = setInterval(cactusApp.naturalDecay, 3000);
 }
 
@@ -233,19 +264,12 @@ $('html').keyup(function(key) {
     if (key.keyCode === 74) $talkButtonMobile.click();
 })
 
-cactusApp.init = () => {
-    cactusApp.updateStat();
-    interval = setInterval(cactusApp.naturalDecay, 5000);
-}
-
 // doc ready
 $('document').ready(function() {
 
     $startEsc.on('click', function () {
         $startScreen.addClass('off-screen');
-        cactusApp.init();        
-        // $waterButton.removeAttr('disabled');
-        // $talkButton.removeAttr('disabled');
+        cactusApp.init();
     })
 
 })
